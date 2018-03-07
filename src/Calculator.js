@@ -6,7 +6,7 @@ class Calculator extends Component {
     this.state = {
       num1:0,
       num2:0,
-      sum: 0
+      result: 0
     }
     this.num1Change = this.num1Change.bind(this);
     this.num2Change = this.num2Change.bind(this);
@@ -39,7 +39,31 @@ class Calculator extends Component {
   sumNums(e) {
     if (this.state.num1 && this.state.num2) {
       this.setState({
-        sum: this.state.num1 + this.state.num2
+        result: this.state.num1 + this.state.num2
+      })
+    }
+  }
+
+  subtractNums(e) {
+    if (this.state.num1 && this.state.num2) {
+      this.setState({
+        result: this.state.num1 - this.state.num2
+      })
+    }
+  }
+
+  multiplyNums(e) {
+    if (this.state.num1 && this.state.num2) {
+      this.setState({
+        result: this.state.num1 * this.state.num2
+      })
+    }
+  }
+
+  divideNums(e) {
+    if (this.state.num1 && this.state.num2) {
+      this.setState({
+        result: this.state.num1 / this.state.num2
       })
     }
   }
@@ -55,7 +79,10 @@ class Calculator extends Component {
           <input type="text" value={this.state.num2} onChange={this.num2Change}  />
         </div>
         <button type='submit' onClick={ (e) => this.sumNums(e)}>SUM</button>
-        <div>Sum: {this.state.sum}</div>
+        <button type='submit' onClick={ (e) => this.subtractNums(e)}>SUBTRACT</button>
+        <button type='submit' onClick={ (e) => this.multiplyNums(e)}>MULTIPLY</button>
+        <button type='submit' onClick={ (e) => this.divideNums(e)}>DIVIDE</button>
+        <div>Result: {this.state.result}</div>
       </div>
 
     )
